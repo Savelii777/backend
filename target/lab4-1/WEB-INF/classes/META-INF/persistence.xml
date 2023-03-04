@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.savelii.lab4.Point</class>
+        <class>com.savelii.lab4.Auth</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url"    value="jdbc:postgresql://localhost:5432/postgres" /> <!-- TODO add url -->
+            <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- TODO add user -->
+            <property name="javax.persistence.jdbc.password" value="555666777Savva"/> <!-- TODO add pass -->
+            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+        </properties>
+    </persistence-unit>
+</persistence>
