@@ -1,8 +1,13 @@
 package com.savelii.lab4;
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Path("/auth")
 public class LoginResource
@@ -37,6 +42,44 @@ public class LoginResource
         }
     }
 
+
+
+
+    @GET
+    @Path("/getLogin")
+    @Produces("application/json")
+    public Response loginGetClick(@Context HttpServletRequest request)
+    {
+
+        int rows = Integer.parseInt(request.getParameter("rows"));
+        int start = Integer.parseInt(request.getParameter("start"));
+
+        List<MyObject> objects = new ArrayList<>();
+
+        System.out.println(rows);
+        // Создаем объекты и вложенные объекты с заданным свойством title
+        if(rows == start)
+        {
+            for (int i = 0; i <= 9; i++) {
+                MyObject object = new MyObject(i);
+                objects.add(object);
+
+            }
+        }else {
+
+            for (int i = start; i <= rows; i++) {
+            MyObject object = new MyObject(i);
+            objects.add(object);
+
+        }}
+
+
+        return Response.ok(objects).build();
+
+    }
+
+
+
     @POST
     @Path("/register")
     public Response register(String login, String pass)
@@ -60,7 +103,7 @@ public class LoginResource
 
     @POST
     @Path("/check")
-    @Produces("text/plain")
+//    @Produces("text/plain")
     public String check(@DefaultValue("") @FormParam("key") String key)
     {
         AuthLogic authLogic = new AuthLogic();

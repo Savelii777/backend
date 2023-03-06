@@ -192,23 +192,7 @@ public class GraphResource {
         emf.close();
     }
 
-//    private boolean checkIfInside(double x, double y, double r)
-//    {
-//        if (x > 0)
-//        {
-//            if (y > 0)
-//                return x <= r && y <= r/2.;
-//            else
-//                return y*y <= r*r/4. - x*x;
-//        }
-//        else
-//        {
-//            if (y > 0)
-//                return y <= x + r;
-//            else
-//                return false;
-//        }
-//    }
+
     private boolean checkIfInside(double x, double y, double r)
     {
         if (x > 0)
